@@ -7,7 +7,7 @@ const Testimonials = () => {
       quote: "OceanSutra transformed our mangrove restoration project. The satellite MRV integration provides real-time verification that our investors trust completely.",
       author: "Dr. Maria Santos",
       position: "Director at Blue Coast Conservation",
-      avatar: "bg-cosmic-light/30"
+      avatar: "bg-cosmic-light/20"
     },
     {
       quote: "The blockchain registry gives us complete transparency in our carbon credit trading. We've processed over $2M in credits with zero disputes thanks to the immutable audit trail.",
@@ -19,7 +19,7 @@ const Testimonials = () => {
       quote: "Compliance reporting used to take weeks. Now our blue carbon projects are automatically verified and certified through the platform's AI systems.",
       author: "Aisha Patel",
       position: "Sustainability Manager at Coastal Ventures",
-      avatar: "bg-cosmic-light/40"
+      avatar: "bg-cosmic-light/20"
     }
   ];
   
