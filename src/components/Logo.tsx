@@ -1,13 +1,17 @@
 
 import React from 'react';
-import { Waves } from 'lucide-react';
+import logoImg from './logo.jpg';
 
 const Logo = () => {
   return (
     <div className="flex items-center gap-3">
-      <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center">
-        <Waves size={24} className="text-primary-foreground" />
-      </div>
+      <img
+        src={logoImg}
+        alt="OceanSutra logo"
+        className="h-10 w-10 rounded-xl object-contain"
+        loading="eager"
+        decoding="async"
+      />
       <span className="text-xl font-semibold tracking-tight text-foreground">
         OceanSutra
       </span>

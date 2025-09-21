@@ -52,11 +52,11 @@ const ImpactAnalytics = () => {
   ];
   
   return (
-    <section id="impact" className="w-full py-20 px-6 md:px-12 bg-background">
+    <section id="pricing" className="w-full py-20 px-6 md:px-12 bg-background">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Global Blue Carbon Impact
+            Global <span className="text-blue-500">Blue</span> Carbon Impact
           </h2>
           <p className="text-muted-foreground text-lg">
             Real-time analytics and verified environmental impact across the blue carbon ecosystem
@@ -130,9 +130,9 @@ const ImpactAnalytics = () => {
         </div>
         
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cosmic-light/10 border border-cosmic-light/20">
-            <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-sm text-cosmic-muted">
+          <div className="mx-auto inline-flex items-center justify-start text-left gap-2 px-3 sm:px-4 py-2 md:px-6 md:py-3 mt-4 md:mt-6 mb-0 rounded-full bg-cosmic-light/10 border border-cosmic-light/20 max-w-[92vw]">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse inline-block"></span>
+            <span className="text-[11px] sm:text-xs md:text-sm whitespace-nowrap text-cosmic-muted leading-none text-left">
               Live data updated every 15 minutes from {Math.floor(Math.random() * 50) + 200}+ monitoring stations
             </span>
           </div>

@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import ConnectWalletButton from '@/components/ConnectWalletButton';
 import Logo from './Logo';
-import { Menu, X, Waves, BarChart3, Coins, Sun, Moon } from 'lucide-react';
+import LoginModal from './LoginModal';
+import { Menu, X, Waves, BarChart3, Coins, Sun, Moon, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Switch } from '@/components/ui/switch';
@@ -10,7 +12,9 @@ import { Switch } from '@/components/ui/switch';
 const Header = () => {
   const [activePage, setActivePage] = useState('features');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode
+  const [scrolled, setScrolled] = useState(false);
   
   useEffect(() => {
     // Apply the theme to the document when it changes
@@ -22,6 +26,15 @@ const Header = () => {
       document.documentElement.classList.add('light-mode');
     }
   }, [isDarkMode]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   
   const handleNavClick = (page: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -42,15 +55,15 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 pt-8 px-4">
-      <header className="w-full max-w-7xl mx-auto py-3 px-6 md:px-8 flex items-center justify-between">
-        <div className="p-3">
+    <div className="sticky top-0 z-50 pt-8 px-3 md:px-4">
+      <header className="w-full max-w-7xl mx-auto py-3 px-3 md:px-4 flex items-center justify-between">
+        <div className={cn("p-0 transition-all duration-300", scrolled ? "opacity-0 -translate-y-1 pointer-events-none" : "opacity-100") }>
           <Logo />
         </div>
         
         {/* Mobile menu button */}
         <button 
-          className="md:hidden p-3 rounded-2xl text-muted-foreground hover:text-foreground"
+          className={cn("md:hidden p-3 rounded-2xl text-muted-foreground hover:text-foreground transition-all duration-300", scrolled ? "opacity-0 -translate-y-1 pointer-events-none" : "opacity-100")}
           onClick={toggleMobileMenu}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -96,7 +109,7 @@ const Header = () => {
         
         {/* Mobile navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-4 right-4 bg-background/95 backdrop-blur-md py-4 px-6 border border-border rounded-2xl shadow-lg z-50">
+          <div className="md:hidden absolute top-20 left-3 right-3 md:left-4 md:right-4 bg-background/95 backdrop-blur-md py-4 px-6 border border-border rounded-2xl shadow-lg z-50">
             <div className="flex flex-col gap-4">
               <a 
                 href="#features" 
@@ -125,6 +138,14 @@ const Header = () => {
               >
                 <BarChart3 size={16} className="inline-block mr-1.5" /> Analytics
               </a>
+              {/* Login button (mobile) */}
+              <button
+                type="button"
+                className="w-full rounded-xl px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                onClick={() => { setLoginOpen(true); setMobileMenuOpen(false); }}
+              >
+                Login
+              </button>
               
               {/* Add theme toggle for mobile */}
               <div className="flex items-center justify-between px-3 py-2">
@@ -143,7 +164,7 @@ const Header = () => {
           </div>
         )}
         
-        <div className="hidden md:flex items-center gap-4">
+        <div className={cn("hidden md:flex items-center gap-4 transition-all duration-300", scrolled ? "opacity-0 -translate-y-1 pointer-events-none" : "opacity-100") }>
           {/* Theme toggle for desktop */}
           <div className="flex items-center gap-2 rounded-full px-3 py-2">
             <Moon size={18} className={`${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
@@ -154,11 +175,27 @@ const Header = () => {
             />
             <Sun size={18} className={`${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
           </div>
+          {/* Login button (desktop) */}
           <div className="rounded-2xl">
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-muted">Connect Wallet</Button>
+            <Button
+              variant="ghost"
+              className="rounded-md text-muted-foreground hover:text-foreground hover:bg-muted"
+              onClick={() => setLoginOpen(true)}
+            >
+              <User className="mr-2 h-4 w-4" /> Login
+            </Button>
+          </div>
+          <div className="rounded-2xl">
+            <ConnectWalletButton
+              variant="ghost"
+              align="end"
+              className="text-muted-foreground hover:text-foreground hover:bg-muted"
+            />
           </div>
         </div>
       </header>
+      {/* Login modal */}
+      <LoginModal open={loginOpen} onOpenChange={setLoginOpen} />
     </div>
   );
 };

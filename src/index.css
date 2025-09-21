@@ -200,3 +200,31 @@
     @apply bg-accent/20 transition-all duration-300;
   }
 }
+
+@layer utilities {
+  /* Infinite horizontal marquee used by TechnologyTrail */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Fade edges for horizontal marquee */
+  .edge-fade-mask {
+    /* Standard */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    /* WebKit */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
+  }
+}

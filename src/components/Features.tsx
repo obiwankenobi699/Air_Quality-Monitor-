@@ -62,11 +62,11 @@ const Features = () => {
   };
   
   return (
-    <section id="features" className="w-full py-12 md:py-16 px-6 md:px-12">
+    <section id="features" className="w-full py-12 md:py-16 px-3 md:px-4">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter">
-            Complete Blue Carbon Ecosystem
+            Complete <span className="text-blue-500">Blue</span> Carbon Ecosystem
           </h2>
           <p className="text-cosmic-muted text-lg">
             End-to-end platform for blue carbon credit registry, trading, verification, and governance

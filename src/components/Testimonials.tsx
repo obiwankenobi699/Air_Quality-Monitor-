@@ -24,41 +24,59 @@ const Testimonials = () => {
   ];
   
   return (
-    <section className="w-full py-20 px-6 md:px-12 bg-card relative overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 cosmic-grid opacity-20"></div>
-      
-      <div className="max-w-7xl mx-auto space-y-16 relative z-10">
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Trusted by conservation leaders globally
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            See how our platform transforms blue carbon projects and ecosystem restoration
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className="p-6 rounded-xl border border-border bg-background/80 backdrop-blur-sm hover:border-border/60 transition-all duration-300"
-            >
-              <div className="mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-primary inline-block mr-1">★</span>
-                ))}
-              </div>
-              <p className="text-lg mb-8 text-foreground/90 italic">"{testimonial.quote}"</p>
-              <div className="flex items-center gap-4">
-                <div className={`h-12 w-12 rounded-full ${testimonial.avatar} bg-muted`}></div>
-                <div>
-                  <h4 className="font-medium text-foreground">{testimonial.author}</h4>
-                  <p className="text-sm text-muted-foreground">{testimonial.position}</p>
-                </div>
-              </div>
+    <section className="w-full py-20 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Big rounded ratings box - now with video background */}
+        <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20">
+          {/* Background video (place your file as src/components/bg1.<ext>) */}
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster=""
+          >
+            <source src="/src/components/bg1.mp4" type="video/mp4" />
+            <source src="/src/components/bg1.webm" type="video/webm" />
+            <source src="/src/components/bg1.mov" type="video/quicktime" />
+          </video>
+          {/* Subtle overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-900/40 to-blue-900/30" />
+          {/* Content */}
+          <div className="relative z-10 p-4 md:p-5 space-y-8">
+            <div className="text-left space-y-2">
+              <h2 className="text-2xl md:text-3xl font-medium tracking-tighter text-white">
+                Trusted by conservation leaders globally
+              </h2>
+              <p className="text-white/85 text-base md:text-lg max-w-2xl">
+                See how our platform transforms blue carbon projects and ecosystem restoration
+              </p>
             </div>
-          ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  key={index}
+                  className="p-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm hover:border-white/30 transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-white inline-block mr-1 opacity-95">★</span>
+                    ))}
+                  </div>
+                  <p className="text-base md:text-lg text-white/95 italic">"{testimonial.quote}"</p>
+                  <div className="flex items-center gap-4 mt-auto pt-4">
+                    <div className={`h-12 w-12 rounded-full ${testimonial.avatar} bg-white/20`}></div>
+                    <div>
+                      <h4 className="font-medium text-white">{testimonial.author}</h4>
+                      <p className="text-sm text-white/80">{testimonial.position}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

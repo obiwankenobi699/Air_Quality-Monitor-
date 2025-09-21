@@ -3,6 +3,9 @@ import { Button } from '@/components/ui/button';
 import TaskBoard from './TaskBoard';
 import TechnologyTrail from './TechnologyTrail';
 import { Loader } from 'lucide-react';
+import PrismaticBurst from './PrismaticBurstUser';
+import ConnectWalletButton from '@/components/ConnectWalletButton';
+
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -12,15 +15,28 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
   return <section className="relative w-full py-12 md:py-20 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden bg-background">
-      {/* Cosmic particle effect (background dots) */}
-      <div className="absolute inset-0 cosmic-grid opacity-30"></div>
-      
-      {/* Gradient glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full">
-        <div className="w-full h-full opacity-10 bg-primary blur-[120px]"></div>
-      </div>
-      
-      <div className={`relative z-10 max-w-4xl text-center space-y-6 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+
+      {/* Chromatic burst in a card that engulfs the main hero + looping logos */}
+      <div className="relative z-10 w-full max-w-screen-xl rounded-2xl lg:rounded-3xl border border-border/60 overflow-hidden px-6 py-6 md:px-12 md:py-10 lg:px-16 lg:py-12 min-h-[520px] md:min-h-[620px] lg:min-h-[700px] xl:min-h-[760px]">
+        {/* OGL burst constrained to the card */}
+        <div className="absolute inset-0 pointer-events-none">
+          <PrismaticBurst
+            animationType="rotate3d"
+            intensity={3.0}
+            speed={0.5}
+            distort={1.0}
+            paused={false}
+            offset={{ x: 0, y: 0 }}
+            hoverDampness={0.25}
+            rayCount={24}
+            mixBlendMode="normal"
+          />
+        </div>
+
+        {/* Theme-aware scrim: none in light mode, stronger only in dark mode */}
+        <div className="absolute inset-0 pointer-events-none bg-transparent dark:bg-black/45 md:dark:bg-black/35" aria-hidden="true" />
+
+        <div className={`relative z-10 max-w-6xl mx-auto text-center space-y-6 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="flex justify-center">
           <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-full bg-muted text-primary">
             <span className="flex h-2 w-2 rounded-full bg-primary"></span>
@@ -29,19 +45,22 @@ const HeroSection = () => {
           </span>
         </div>
         
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-balance text-foreground">
-          Blue Carbon credits for <span className="text-foreground">sustainable</span> oceans
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-balance text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+          Blue Carbon credits for <span className="text-white">sustainable</span> oceans
         </h1>
         
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
+        <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto text-balance drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
           Trade, verify, and manage blue carbon credits with blockchain transparency. Built for ocean conservation projects, carbon markets, and sustainable marine ecosystems.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-center">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground text-base h-12 px-8 transition-all duration-200 min-h-[48px]">
-            Connect Wallet
-          </Button>
-          <Button variant="outline" className="border-border text-foreground hover:bg-accent hover:text-accent-foreground text-base h-12 px-8 transition-all duration-200 min-h-[48px]">
+          <ConnectWalletButton
+            label="Connect Wallet"
+            variant="default"
+            align="center"
+            className="w-full sm:w-auto bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px] shadow-lg shadow-black/30"
+          />
+          <Button variant="outline" className="w-full sm:w-auto text-white border-white/20 hover:border-white/30 text-base h-12 px-8 transition-all duration-200 min-h-[48px] bg-black/55 hover:bg-black/65 backdrop-blur supports-[backdrop-filter]:bg-black/45 shadow-md shadow-black/30">
             Explore Registry
           </Button>
         </div>
@@ -49,11 +68,12 @@ const HeroSection = () => {
         {/* Technology Trail */}
         <TechnologyTrail />
         
-        <div className="pt-6 text-sm text-muted-foreground">
+        <div className="pt-3 md:pt-4 text-xs md:text-sm text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
           Verified by satellite MRV • Blockchain transparent • DAO governed
         </div>
+        </div>
       </div>
-      
+
       {/* Task Manager UI integrated in hero section with glassmorphic effect */}
       <div className={`w-full max-w-7xl mt-12 z-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
         <div className="cosmic-glow relative rounded-xl overflow-hidden border border-border backdrop-blur-sm bg-card shadow-lg">
