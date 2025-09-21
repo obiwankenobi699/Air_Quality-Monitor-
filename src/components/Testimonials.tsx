@@ -1,5 +1,6 @@
 
 import React from 'react';
+import bg1Video from './bg1.mp4';
 
 const Testimonials = () => {
   const testimonials = [
@@ -28,19 +29,16 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         {/* Big rounded ratings box - now with video background */}
         <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20">
-          {/* Background video (place your file as src/components/bg1.<ext>) */}
+          {/* Background video (bundled via Vite asset import) */}
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
             loop
             muted
             playsInline
-            poster=""
-          >
-            <source src="/src/components/bg1.mp4" type="video/mp4" />
-            <source src="/src/components/bg1.webm" type="video/webm" />
-            <source src="/src/components/bg1.mov" type="video/quicktime" />
-          </video>
+            preload="metadata"
+            src={bg1Video}
+          />
           {/* Subtle overlay for readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-sky-900/40 to-blue-900/30" />
           {/* Content */}
