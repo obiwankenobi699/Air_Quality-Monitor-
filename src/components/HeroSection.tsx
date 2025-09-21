@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import TaskBoard from './TaskBoard';
+import TechnologyTrail from './TechnologyTrail';
 import { Loader } from 'lucide-react';
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,6 +45,9 @@ const HeroSection = () => {
             Explore Registry
           </Button>
         </div>
+        
+        {/* Technology Trail */}
+        <TechnologyTrail />
         
         <div className="pt-6 text-sm text-muted-foreground">
           Verified by satellite MRV • Blockchain transparent • DAO governed
