@@ -4,21 +4,21 @@ import React from 'react';
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Our payment processing efficiency increased by 40% and transaction failures dropped to near zero. The automation features are game-changing.",
-      author: "Sarah Johnson",
-      position: "CFO at TechCorp",
+      quote: "OceanSutra transformed our mangrove restoration project. The satellite MRV integration provides real-time verification that our investors trust completely.",
+      author: "Dr. Maria Santos",
+      position: "Director at Blue Coast Conservation",
       avatar: "bg-cosmic-light/30"
     },
     {
-      quote: "The real-time analytics and fraud detection capabilities have saved us millions. We can spot issues before they become problems.",
-      author: "Michael Chen",
-      position: "Head of Risk at FinanceFlow",
+      quote: "The blockchain registry gives us complete transparency in our carbon credit trading. We've processed over $2M in credits with zero disputes thanks to the immutable audit trail.",
+      author: "James Mitchell",
+      position: "Carbon Markets Lead at EcoTrade Partners",
       avatar: "bg-cosmic-light/20"
     },
     {
-      quote: "Compliance used to be a nightmare. Now our regulatory reporting is automated and we're always audit-ready.",
-      author: "Leila Rodriguez",
-      position: "Operations Director at GlobalPay",
+      quote: "Compliance reporting used to take weeks. Now our blue carbon projects are automatically verified and certified through the platform's AI systems.",
+      author: "Aisha Patel",
+      position: "Sustainability Manager at Coastal Ventures",
       avatar: "bg-cosmic-light/40"
     }
   ];
@@ -31,10 +31,10 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Trusted by finance teams worldwide
+            Trusted by conservation leaders globally
           </h2>
           <p className="text-muted-foreground text-lg">
-            See how our platform transforms financial operations for businesses
+            See how our platform transforms blue carbon projects and ecosystem restoration
           </p>
         </div>
         
