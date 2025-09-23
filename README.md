@@ -10,6 +10,9 @@ OceanSutra is a Vite + React + TypeScript web app that showcases real‑time ana
 - Wallet connect dropdown (demo) using MetaMask detection
 - Media handling via Vite’s asset pipeline (images/video)
 
+<img width="1607" height="855" alt="image" src="https://github.com/user-attachments/assets/c5af334a-4f44-4f1d-827a-36a68efa0977" />
+
+
 ## Getting Started
 
 Prerequisites:
