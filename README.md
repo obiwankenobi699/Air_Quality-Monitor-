@@ -87,4 +87,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 
-This project is provided as‑is. Add a LICENSE file if you need a specific license.
+creative commons 4.0
