@@ -1,78 +1,77 @@
-
 import React, { useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, Waves, Satellite, Shield, Coins, BarChart3, Users } from "lucide-react";
+import { ChevronDown, Satellite, Shield, BarChart3, Users, Waves, Coins } from "lucide-react";
 
 const Features = () => {
   const [openFeature, setOpenFeature] = useState<number | null>(null);
-  
+
   const features = [
     {
-      title: "Satellite MRV Integration",
-      description: "Real-time monitoring of blue carbon ecosystems through satellite and IoT data.",
-      expandedDescription: "Connect directly to satellite feeds, drone sensors, and IoT devices for continuous monitoring of mangroves, seagrass beds, and salt marshes. Automated data collection ensures accurate carbon sequestration measurements with blockchain timestamping for immutable records.",
+      title: "Satellite AQI Integration",
+      description: "Real-time air quality monitoring through satellite and IoT sensor networks.",
+      expandedDescription: "Integrate live data from ground-based sensors, drones, and satellites to track PM2.5, PM10, CO₂, NO₂, and O₃ levels. Automatic updates every few minutes ensure continuous and accurate AQI tracking with real-time geographic mapping.",
       icon: (
         <Satellite size={24} className="text-cosmic-accent" />
       )
     },
     {
-      title: "Blockchain Registry",
-      description: "Immutable carbon credit registry with full transparency and provenance tracking.",
-      expandedDescription: "Every carbon credit is registered on the blockchain with complete lifecycle tracking from project inception to retirement. Smart contracts automate verification, transfer, and retirement processes while maintaining full audit trails and preventing double-counting.",
+      title: "Air Quality Data Registry",
+      description: "Immutable AQI record system for transparency and reliability.",
+      expandedDescription: "All collected air quality data is logged and time-stamped to ensure authenticity. Blockchain-backed storage ensures no data manipulation and allows public or authorized access for research and environmental governance.",
       icon: (
         <Shield size={24} className="text-cosmic-accent" />
       )
     },
     {
-      title: "Carbon Credit Trading",
-      description: "Decentralized marketplace for blue carbon credit trading with real-time pricing.",
-      expandedDescription: "Trade verified blue carbon credits through our automated marketplace. Real-time pricing based on supply and demand, automated escrow through smart contracts, and instant settlement. Support for both spot trading and futures contracts with integrated risk management.",
+      title: "Pollution Source Tracking",
+      description: "Identify and analyze major contributors to air pollution in real-time.",
+      expandedDescription: "Use spatial data and AI-driven analytics to trace emission hotspots from industries, vehicles, or other sources. Enables policymakers to take immediate corrective action with accurate localization and trend prediction.",
       icon: (
         <Coins size={24} className="text-cosmic-accent" />
       )
     },
     {
-      title: "Third-Party Verification",
-      description: "Automated verification by certified third-party auditors and AI systems.",
-      expandedDescription: "Integration with certified verification bodies and AI-powered validation systems. Automated quality checks, compliance verification, and certification issuance. Multi-layer verification ensures credits meet international standards and regulatory requirements.",
+      title: "AI Verification System",
+      description: "Automated verification of AQI data quality and anomaly detection.",
+      expandedDescription: "AI models verify the integrity and validity of sensor readings. Outliers and false readings are filtered automatically using adaptive calibration algorithms to maintain reliable environmental statistics.",
       icon: (
         <Shield size={24} className="text-cosmic-accent" />
       )
     },
     {
-      title: "Market Analytics",
-      description: "Advanced analytics for carbon market trends, pricing, and ecosystem impact.",
-      expandedDescription: "Comprehensive dashboards showing market trends, price history, trading volumes, and ecosystem health metrics. AI-powered insights help traders make informed decisions while tracking real environmental impact of conservation projects.",
+      title: "Environmental Analytics Dashboard",
+      description: "Comprehensive AQI analytics with trend visualization and prediction models.",
+      expandedDescription: "Visual dashboards display historical AQI trends, pollutant composition, and future forecasts. Interactive charts help users understand local air quality variations and predict hazardous pollution periods.",
       icon: (
         <BarChart3 size={24} className="text-cosmic-accent" />
       )
     },
     {
-      title: "DAO Governance",
-      description: "Decentralized governance allowing stakeholder participation in platform decisions.",
-      expandedDescription: "Token-based governance system where stakeholders vote on protocol upgrades, verification standards, and ecosystem policies. Transparent decision-making process with weighted voting based on stake and participation in the blue carbon ecosystem.",
+      title: "Community Governance",
+      description: "Citizen-driven environmental governance through data sharing and reporting.",
+      expandedDescription: "A participatory system where local citizens and organizations can contribute data, report anomalies, and vote on air quality improvement initiatives — enhancing transparency and accountability in AQI management.",
       icon: (
         <Users size={24} className="text-cosmic-accent" />
       )
     }
   ];
-  
+
   const toggleFeature = (index: number) => {
     setOpenFeature(openFeature === index ? null : index);
   };
-  
+
   return (
     <section id="features" className="w-full py-12 md:py-16 px-3 md:px-4">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter">
-            Complete <span className="text-blue-500">Blue</span> Carbon Ecosystem
+            Intelligent <span className="text-blue-500">Air Quality</span> Monitoring System
           </h2>
           <p className="text-cosmic-muted text-lg">
-            End-to-end platform for blue carbon credit registry, trading, verification, and governance
+            End-to-end platform for AQI tracking, pollution analytics, and community-based environmental governance
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <Collapsible

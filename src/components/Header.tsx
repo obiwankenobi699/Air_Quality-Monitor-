@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import ConnectWalletButton from '@/components/ConnectWalletButton';
 import Logo from './Logo';
 import LoginModal from './LoginModal';
 import { Menu, X, Waves, BarChart3, Coins, Sun, Moon, User } from 'lucide-react';
@@ -91,15 +90,14 @@ const Header = () => {
                 )}
                 onClick={handleNavClick('dashboard')}
               >
-                <Coins size={16} className="inline-block mr-1.5" /> Trading
               </ToggleGroupItem>
               <ToggleGroupItem 
-                value="pricing" 
+                value="analysis" 
                 className={cn(
                   "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'pricing' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'analysis' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 )}
-                onClick={handleNavClick('pricing')}
+                onClick={handleNavClick('analysis')}
               >
                 <BarChart3 size={16} className="inline-block mr-1.5" /> Analytics
               </ToggleGroupItem>
@@ -118,7 +116,7 @@ const Header = () => {
                 }`}
                 onClick={handleNavClick('features')}
               >
-                <Waves size={16} className="inline-block mr-1.5" /> Registry
+                <Waves size={16} className="inline-block mr-1.5" /> Features
               </a>
               <a 
                 href="#dashboard" 
@@ -130,22 +128,16 @@ const Header = () => {
                 <Coins size={16} className="inline-block mr-1.5" /> Trading
               </a>
               <a 
-                href="#pricing" 
+                href="#analysis" 
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'pricing' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'analysis' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
-                onClick={handleNavClick('pricing')}
+                onClick={handleNavClick('analysis')}
               >
                 <BarChart3 size={16} className="inline-block mr-1.5" /> Analytics
               </a>
               {/* Login button (mobile) */}
-              <button
-                type="button"
-                className="w-full rounded-xl px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                onClick={() => { setLoginOpen(true); setMobileMenuOpen(false); }}
-              >
-                Login
-              </button>
+              
               
               {/* Add theme toggle for mobile */}
               <div className="flex items-center justify-between px-3 py-2">
@@ -177,20 +169,10 @@ const Header = () => {
           </div>
           {/* Login button (desktop) */}
           <div className="rounded-2xl">
-            <Button
-              variant="ghost"
-              className="rounded-md text-muted-foreground hover:text-foreground hover:bg-muted"
-              onClick={() => setLoginOpen(true)}
-            >
-              <User className="mr-2 h-4 w-4" /> Login
-            </Button>
+         
           </div>
           <div className="rounded-2xl">
-            <ConnectWalletButton
-              variant="ghost"
-              align="end"
-              className="text-muted-foreground hover:text-foreground hover:bg-muted"
-            />
+            
           </div>
         </div>
       </header>

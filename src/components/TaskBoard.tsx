@@ -1,153 +1,152 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import TaskColumn, { Column } from './TaskColumn';
 import { Task } from './TaskCard';
 
-// Initial data for blue carbon credit listings
+// Air Quality Monitoring Board Data
 const initialColumns: Column[] = [
   {
-    id: 'listed',
-    title: 'Active Listings',
+    id: 'active',
+    title: 'Active Monitoring Stations',
     color: 'muted',
     tasks: [
       {
-        id: 'bc1',
-        title: 'Mangrove Restoration - Thailand',
-        description: '2,500 tCO2e from coastal mangrove reforestation project',
-        tag: { color: 'blue', label: 'Mangroves' },
-        dueDate: '$45/credit',
-        assignees: 1,
-        progress: { completed: 1500, total: 2500 }
-      },
-      {
-        id: 'bc2',
-        title: 'Seagrass Conservation - Australia',
-        description: '1,800 tCO2e from seagrass meadow protection initiative',
-        tag: { color: 'accent', label: 'Seagrass' },
-        dueDate: '$52/credit',
-        assignees: 2,
-        progress: { completed: 800, total: 1800 }
-      },
-      {
-        id: 'bc3',
-        title: 'Salt Marsh Restoration - California',
-        description: '3,200 tCO2e from wetland restoration and protection',
-        tag: { color: 'purple', label: 'Salt Marsh' },
-        dueDate: '$48/credit',
-        assignees: 1,
-        progress: { completed: 0, total: 3200 }
-      },
-      {
-        id: 'bc4',
-        title: 'Blue Carbon Research - Norway',
-        description: '950 tCO2e from kelp forest conservation project',
-        tag: { color: 'blue', label: 'Kelp Forest' },
-        dueDate: '$55/credit',
+        id: 'aqi1',
+        title: 'Delhi Central Monitoring Unit',
+        description: 'Real-time AQI monitoring for Central Delhi region',
+        tag: { color: 'blue', label: 'PM2.5' },
+        dueDate: 'Live',
         assignees: 3,
-        progress: { completed: 150, total: 950 }
+        progress: { completed: 76, total: 100 }
+      },
+      {
+        id: 'aqi2',
+        title: 'Mumbai Coastal AQI Station',
+        description: 'Measures PM10 and NO₂ levels from sea breeze impact',
+        tag: { color: 'accent', label: 'PM10' },
+        dueDate: 'Live',
+        assignees: 2,
+        progress: { completed: 64, total: 100 }
+      },
+      {
+        id: 'aqi3',
+        title: 'Bangalore Urban Air Sensor',
+        description: 'IoT-based AQI tracking in urban tech corridors',
+        tag: { color: 'purple', label: 'O₃' },
+        dueDate: 'Live',
+        assignees: 4,
+        progress: { completed: 89, total: 100 }
+      },
+      {
+        id: 'aqi4',
+        title: 'Chennai Port Sensor Network',
+        description: 'Monitors coastal pollution and sulfur dioxide (SO₂)',
+        tag: { color: 'blue', label: 'SO₂' },
+        dueDate: 'Live',
+        assignees: 1,
+        progress: { completed: 72, total: 100 }
       }
     ]
   },
   {
     id: 'verification',
-    title: 'Under Verification',
+    title: 'Under Calibration',
     color: 'blue',
     tasks: [
       {
-        id: 'bc5',
-        title: 'Mangrove Protection - Indonesia',
-        description: '4,100 tCO2e awaiting third-party verification',
-        tag: { color: 'blue', label: 'Mangroves' },
+        id: 'aqi5',
+        title: 'Ahmedabad Calibration Unit',
+        description: 'Calibration under process for PM2.5 and CO sensors',
+        tag: { color: 'blue', label: 'PM2.5' },
         dueDate: 'Pending',
         assignees: 2,
-        progress: { completed: 3800, total: 4100 }
+        progress: { completed: 60, total: 100 }
       },
       {
-        id: 'bc6',
-        title: 'Coastal Wetland - Bangladesh',
-        description: '2,700 tCO2e undergoing satellite MRV validation',
-        tag: { color: 'purple', label: 'Wetlands' },
+        id: 'aqi6',
+        title: 'Kolkata AQI Verification Node',
+        description: 'Sensor readings cross-verified with satellite MRV',
+        tag: { color: 'purple', label: 'CO' },
         dueDate: 'Pending',
         assignees: 1,
-        progress: { completed: 2200, total: 2700 }
+        progress: { completed: 40, total: 100 }
       },
       {
-        id: 'bc7',
-        title: 'Seagrass Restoration - Philippines',
-        description: '1,600 tCO2e in final verification stage',
-        tag: { color: 'accent', label: 'Seagrass' },
+        id: 'aqi7',
+        title: 'Pune Urban AQI System',
+        description: 'IoT nodes synced with central data hub',
+        tag: { color: 'accent', label: 'NO₂' },
         dueDate: 'Pending',
-        assignees: 2,
-        progress: { completed: 1600, total: 1600 }
+        assignees: 3,
+        progress: { completed: 85, total: 100 }
       }
     ]
   },
   {
-    id: 'trading',
-    title: 'In Trading',
+    id: 'analysise',
+    title: 'Data Analysis',
     color: 'amber',
     tasks: [
       {
-        id: 'bc8',
-        title: 'Premium Mangroves - Costa Rica',
-        description: '1,200 tCO2e certified credits in active trading',
-        tag: { color: 'blue', label: 'Mangroves' },
-        dueDate: '$62/credit',
+        id: 'aqi8',
+        title: 'Delhi AQI Trend Analysis',
+        description: 'Analyzing monthly AQI patterns and pollutants correlation',
+        tag: { color: 'blue', label: 'Analytics' },
+        dueDate: 'Ongoing',
         assignees: 5,
-        progress: { completed: 450, total: 1200 }
+        progress: { completed: 65, total: 100 }
       },
       {
-        id: 'bc9',
-        title: 'Seagrass Premium - Mediterranean',
-        description: '800 tCO2e high-quality verified credits',
-        tag: { color: 'accent', label: 'Seagrass' },
-        dueDate: '$58/credit',
+        id: 'aqi9',
+        title: 'Pan India AQI Heatmap Generation',
+        description: 'Generating AQI heatmaps using live sensor data',
+        tag: { color: 'accent', label: 'Visualization' },
+        dueDate: 'Ongoing',
         assignees: 3,
-        progress: { completed: 320, total: 800 }
+        progress: { completed: 45, total: 100 }
       },
       {
-        id: 'bc10',
-        title: 'Salt Marsh Elite - UK',
-        description: '650 tCO2e premium verified with IoT monitoring',
-        tag: { color: 'purple', label: 'Salt Marsh' },
-        dueDate: '$68/credit',
+        id: 'aqi10',
+        title: 'Predictive AQI Modelling',
+        description: 'Training model on AQI trends for next 7-day prediction',
+        tag: { color: 'purple', label: 'AI Model' },
+        dueDate: 'Ongoing',
         assignees: 4,
-        progress: { completed: 500, total: 650 }
+        progress: { completed: 30, total: 100 }
       }
     ]
   },
   {
-    id: 'retired',
-    title: 'Retired Credits',
+    id: 'archived',
+    title: 'Archived Reports',
     color: 'accent',
     tasks: [
       {
-        id: 'bc11',
-        title: 'Corporate Offset - Microsoft',
-        description: '5,000 tCO2e retired for corporate carbon neutrality',
-        tag: { color: 'blue', label: 'Mangroves' },
-        dueDate: 'Retired',
+        id: 'aqi11',
+        title: 'AQI Annual Report 2024',
+        description: 'Consolidated data of AQI readings across Indian metros',
+        tag: { color: 'blue', label: 'Report' },
+        dueDate: 'Published',
         assignees: 1,
-        progress: { completed: 5000, total: 5000 }
+        progress: { completed: 100, total: 100 }
       },
       {
-        id: 'bc12',
-        title: 'Government Program - EU',
-        description: '8,500 tCO2e retired for national climate targets',
-        tag: { color: 'accent', label: 'Mixed' },
-        dueDate: 'Retired',
-        assignees: 1,
-        progress: { completed: 8500, total: 8500 }
+        id: 'aqi12',
+        title: 'State Pollution Index Summary',
+        description: 'Compiled air pollution summary by CPCB',
+        tag: { color: 'accent', label: 'CPCB' },
+        dueDate: 'Published',
+        assignees: 2,
+        progress: { completed: 100, total: 100 }
       },
       {
-        id: 'bc13',
-        title: 'Individual Offsets - Bundle',
-        description: '1,750 tCO2e retired by individual purchasers',
-        tag: { color: 'purple', label: 'Various' },
-        dueDate: 'Retired',
-        assignees: 127,
-        progress: { completed: 1750, total: 1750 }
+        id: 'aqi13',
+        title: 'Satellite Data Validation Logs',
+        description: 'Historical dataset verification from ISRO satellite feeds',
+        tag: { color: 'purple', label: 'Satellite' },
+        dueDate: 'Archived',
+        assignees: 1,
+        progress: { completed: 100, total: 100 }
       }
     ]
   }
@@ -166,12 +165,10 @@ const TaskBoard: React.FC<TaskBoardProps> = ({ className }) => {
   const handleTaskDragStart = (e: React.DragEvent, task: Task) => {
     e.dataTransfer.setData('taskId', task.id);
     setDraggedTask(task);
-    
-    // Find source column
-    const sourceColumn = columns.find(col => 
+
+    const sourceColumn = columns.find(col =>
       col.tasks.some(t => t.id === task.id)
     );
-    
     if (sourceColumn) {
       setDragSourceColumn(sourceColumn.id);
       e.dataTransfer.setData('sourceColumnId', sourceColumn.id);
@@ -183,51 +180,28 @@ const TaskBoard: React.FC<TaskBoardProps> = ({ className }) => {
     setDragSourceColumn(null);
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-  };
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    // Handle drag leave logic if needed
-  };
-
   const handleDrop = (e: React.DragEvent, targetColumnId: string) => {
     e.preventDefault();
-    
     const taskId = e.dataTransfer.getData('taskId');
     const sourceColumnId = e.dataTransfer.getData('sourceColumnId');
-    
-    if (!taskId || !sourceColumnId || sourceColumnId === targetColumnId) {
-      return;
-    }
-    
-    // Update columns state
+    if (!taskId || !sourceColumnId || sourceColumnId === targetColumnId) return;
+
     const newColumns = columns.map(column => {
-      // Remove task from source column
       if (column.id === sourceColumnId) {
-        return {
-          ...column,
-          tasks: column.tasks.filter(task => task.id !== taskId)
-        };
+        return { ...column, tasks: column.tasks.filter(t => t.id !== taskId) };
       }
-      
-      // Add task to target column
       if (column.id === targetColumnId) {
-        const taskToMove = columns.find(col => col.id === sourceColumnId)?.tasks.find(task => task.id === taskId);
-        if (taskToMove) {
-          return {
-            ...column,
-            tasks: [...column.tasks, taskToMove]
-          };
-        }
+        const taskToMove = columns
+          .find(col => col.id === sourceColumnId)
+          ?.tasks.find(t => t.id === taskId);
+        return taskToMove
+          ? { ...column, tasks: [...column.tasks, taskToMove] }
+          : column;
       }
-      
       return column;
     });
-    
+
     setColumns(newColumns);
-    
-    // Show a toast notification
     const targetColumn = columns.find(col => col.id === targetColumnId);
     if (targetColumn && draggedTask) {
       toast({
@@ -237,10 +211,6 @@ const TaskBoard: React.FC<TaskBoardProps> = ({ className }) => {
     }
   };
 
-  const handleStatusChange = (taskId: string, newStatus: string) => {
-    // This function can be used for programmatic status changes (not used in this implementation)
-  };
-
   return (
     <div className={`flex gap-4 overflow-x-auto pb-4 ${className}`}>
       {columns.map(column => (
@@ -248,11 +218,11 @@ const TaskBoard: React.FC<TaskBoardProps> = ({ className }) => {
           key={column.id}
           column={column}
           onDrop={handleDrop}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
+          onDragOver={(e) => e.preventDefault()}
+          onDragLeave={() => {}}
           onTaskDragStart={handleTaskDragStart}
           onTaskDragEnd={handleTaskDragEnd}
-          onStatusChange={handleStatusChange}
+          onStatusChange={() => {}}
         />
       ))}
     </div>

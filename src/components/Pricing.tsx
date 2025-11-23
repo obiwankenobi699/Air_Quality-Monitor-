@@ -1,53 +1,52 @@
-
 import React from 'react';
-import { BarChart3, TrendingUp, Globe, Waves } from 'lucide-react';
+import { BarChart3, TrendingUp, Globe, Wind } from 'lucide-react';
 
 const ImpactAnalytics = () => {
   const metrics = [
     {
-      title: "Global Impact",
-      value: "2.4M",
-      unit: "tCO₂",
-      description: "Carbon sequestered through verified blue carbon projects",
-      trend: "+18%",
+      title: "Global AQI Index",
+      value: "82",
+      unit: "avg AQI",
+      description: "Average real-time AQI level across monitored cities",
+      trend: "-12%",
       icon: <Globe className="h-8 w-8 text-cosmic-accent" />,
-      gradient: "from-blue-500/20 to-cyan-500/20"
+      gradient: "from-green-500/20 to-emerald-500/20"
     },
     {
-      title: "Active Projects",
-      value: "847",
-      unit: "sites",
-      description: "Mangrove, seagrass, and salt marsh restoration projects",
-      trend: "+24%",
-      icon: <Waves className="h-8 w-8 text-cosmic-accent" />,
-      gradient: "from-emerald-500/20 to-teal-500/20"
+      title: "Active Monitoring Stations",
+      value: "312",
+      unit: "stations",
+      description: "IoT-based sensors deployed in urban and rural locations",
+      trend: "+8%",
+      icon: <Wind className="h-8 w-8 text-cosmic-accent" />,
+      gradient: "from-sky-500/20 to-cyan-500/20"
     },
     {
-      title: "Market Volume",
-      value: "$12.8M",
-      unit: "traded",
-      description: "Total value of carbon credits traded on the platform",
-      trend: "+35%",
+      title: "Emission Reduction",
+      value: "24.6K",
+      unit: "tons CO₂",
+      description: "Measured reduction in greenhouse gases this quarter",
+      trend: "+19%",
       icon: <TrendingUp className="h-8 w-8 text-cosmic-accent" />,
-      gradient: "from-purple-500/20 to-indigo-500/20"
+      gradient: "from-orange-500/20 to-amber-500/20"
     }
   ];
 
   const analyticsFeatures = [
     {
-      title: "Real-Time Monitoring",
-      description: "Live satellite and IoT data streams providing instant ecosystem health updates",
-      metrics: ["24/7 monitoring", "Sub-meter accuracy", "99.9% uptime"]
+      title: "Real-Time Air Quality Monitoring",
+      description: "Continuous AQI data collection from distributed IoT sensors and satellites.",
+      metrics: ["Live AQI readings", "PM2.5 & PM10 levels", "CO, NO₂, O₃ tracking"]
     },
     {
-      title: "Predictive Analytics",
-      description: "AI-powered insights forecasting carbon sequestration potential and market trends",
-      metrics: ["ML algorithms", "Climate modeling", "Risk assessment"]
+      title: "Predictive Pollution Analytics",
+      description: "AI-powered forecasting for upcoming air quality patterns and hotspot predictions.",
+      metrics: ["ML prediction models", "Weather-AQI correlation", "Anomaly detection"]
     },
     {
-      title: "Impact Visualization",
-      description: "Interactive dashboards showing environmental and economic impact of conservation efforts",
-      metrics: ["3D mapping", "Time-series analysis", "Custom reports"]
+      title: "Health & Impact Visualization",
+      description: "Interactive dashboards linking AQI levels with respiratory health data and alerts.",
+      metrics: ["Geo heatmaps", "Health risk index", "Custom city reports"]
     }
   ];
   
@@ -56,10 +55,10 @@ const ImpactAnalytics = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Global <span className="text-blue-500">Blue</span> Carbon Impact
+            Global <span className="text-green-500">Air Quality</span> Impact
           </h2>
           <p className="text-muted-foreground text-lg">
-            Real-time analytics and verified environmental impact across the blue carbon ecosystem
+            Real-time air quality data and pollution insights from smart monitoring networks
           </p>
         </div>
         
@@ -96,10 +95,10 @@ const ImpactAnalytics = () => {
         <div className="space-y-8">
           <div className="text-center">
             <h3 className="text-2xl font-medium tracking-tighter text-foreground mb-2">
-              Advanced Analytics Suite
+              Advanced Air Analytics Suite
             </h3>
             <p className="text-cosmic-muted">
-              Comprehensive monitoring and insights powered by AI and satellite technology
+              AI-driven air quality monitoring, forecasting, and health impact visualization
             </p>
           </div>
           
@@ -133,7 +132,7 @@ const ImpactAnalytics = () => {
           <div className="mx-auto inline-flex items-center justify-start text-left gap-2 px-3 sm:px-4 py-2 md:px-6 md:py-3 mt-4 md:mt-6 mb-0 rounded-full bg-cosmic-light/10 border border-cosmic-light/20 max-w-[92vw]">
             <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 animate-pulse inline-block"></span>
             <span className="text-[11px] sm:text-xs md:text-sm whitespace-nowrap text-cosmic-muted leading-none text-left">
-              Live data updated every 15 minutes from {Math.floor(Math.random() * 50) + 200}+ monitoring stations
+              Live AQI updated every 15 minutes from {Math.floor(Math.random() * 80) + 150}+ monitoring stations
             </span>
           </div>
         </div>

@@ -1,25 +1,24 @@
-
 import React from 'react';
 import bg1Video from './bg1.mp4';
 
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "OceanSutra transformed our mangrove restoration project. The satellite MRV integration provides real-time verification that our investors trust completely.",
-      author: "Dr. Maria Santos",
-      position: "Director at Blue Coast Conservation",
+      quote: "AeroSutra completely revolutionized our city’s air monitoring system. The IoT sensor integration provides real-time AQI data our citizens can actually trust.",
+      author: "Dr. Neha Verma",
+      position: "Chief Environmental Scientist, Delhi Clean Air Mission",
       avatar: "bg-cosmic-light/20"
     },
     {
-      quote: "The blockchain registry gives us complete transparency in our carbon credit trading. We've processed over $2M in credits with zero disputes thanks to the immutable audit trail.",
-      author: "James Mitchell",
-      position: "Carbon Markets Lead at EcoTrade Partners",
+      quote: "The analytics dashboard helped us identify pollution hotspots in record time. We reduced PM2.5 levels by 14% within three months of deployment.",
+      author: "Rohit Mehra",
+      position: "Head of Urban Sustainability, Pune Smart City",
       avatar: "bg-cosmic-light/20"
     },
     {
-      quote: "Compliance reporting used to take weeks. Now our blue carbon projects are automatically verified and certified through the platform's AI systems.",
-      author: "Aisha Patel",
-      position: "Sustainability Manager at Coastal Ventures",
+      quote: "With AeroSutra’s predictive AQI engine, we can now forecast hazardous air days and alert schools and hospitals before the exposure begins.",
+      author: "Dr. Laila Rahman",
+      position: "Director, National Air Quality Observatory",
       avatar: "bg-cosmic-light/20"
     }
   ];
@@ -27,9 +26,9 @@ const Testimonials = () => {
   return (
     <section className="w-full py-20 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        {/* Big rounded ratings box - now with video background */}
+        {/* Big rounded ratings box - with video background */}
         <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20">
-          {/* Background video (bundled via Vite asset import) */}
+          {/* Background video */}
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
@@ -39,16 +38,17 @@ const Testimonials = () => {
             preload="metadata"
             src={bg1Video}
           />
-          {/* Subtle overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-sky-900/40 to-blue-900/30" />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-900/40 to-green-900/30" />
+          
           {/* Content */}
           <div className="relative z-10 p-4 md:p-5 space-y-8">
             <div className="text-left space-y-2">
               <h2 className="text-2xl md:text-3xl font-medium tracking-tighter text-white">
-                Trusted by conservation leaders globally
+                Trusted by air quality and environmental leaders worldwide
               </h2>
               <p className="text-white/85 text-base md:text-lg max-w-2xl">
-                See how our platform transforms blue carbon projects and ecosystem restoration
+                Discover how AeroSutra is empowering cities and scientists with AI-driven air quality insights
               </p>
             </div>
 

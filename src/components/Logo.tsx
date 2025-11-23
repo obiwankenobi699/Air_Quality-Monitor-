@@ -13,7 +13,7 @@ const Logo = () => {
         decoding="async"
       />
       <span className="text-xl font-semibold tracking-tight text-foreground">
-        OceanSutra
+        Aero Sutra
       </span>
     </div>
   );
