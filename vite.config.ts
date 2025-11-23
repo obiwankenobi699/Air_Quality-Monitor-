@@ -8,13 +8,15 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [
-    react(), 
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base:"/Air_Quality-Monitor-"
+  // IMPORTANT: trailing slash required for subpath hosting
+  base: "/Air_Quality-Monitor-/",
 }));
+
+
+
