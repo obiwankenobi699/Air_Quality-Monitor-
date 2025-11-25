@@ -1,32 +1,41 @@
-name: Deploy to GitHub Pages
+name: Build & Deploy Vite React to GitHub Pages (pinned actions)
 
+# Triggers: manual dispatch or push to main
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
+      # 1) Checkout the repository (pinned SHA)
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: true   # allow actions (GITHUB_TOKEN) to push if needed
 
-      - name: Setup Node
-        uses: actions/setup-node@8f15223d434a8f2fcf0f7aa9c5a7c0bc495978fc
+      # 2) Setup Node.js (pinned SHA) and enable npm cache
+      - name: Setup Node.js
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610
         with:
           node-version: 20
           cache: npm
 
+      # 3) Install dependencies (deterministic)
       - name: Install dependencies
         run: npm ci
 
+      # 4) Build the Vite project
       - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@bdf93b6c9f7d8e9ddb07f8a19e8f937a9825cd45
+      # 5) Deploy the ./dist folder to gh-pages (pinned SHA)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@4a2e02b36f31d8974a0d09d3bb9f3172aa2d0d0d
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
