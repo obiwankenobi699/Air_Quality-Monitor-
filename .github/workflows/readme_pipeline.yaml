@@ -1,10 +1,10 @@
-name: Manual README Pipeline (gh CLI)
+name: Manual README Pipeline
 
 on:
   workflow_dispatch:
     inputs:
       run_message:
-        description: "Message to print in the workflow"
+        description: "Message to print"
         required: false
         default: "Hello from GitHub Actions!"
 
@@ -13,19 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Print workflow input message
+      # 2. Print workflow input
       - name: Print message
         run: echo "${{ github.event.inputs.run_message }}"
 
-      # 3. Append timestamp to README.md and push using gh CLI
-      - name: Update README with timestamp using gh
+      # 3. Append timestamp to README.md and push using GITHUB_TOKEN
+      - name: Update README with timestamp
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Last manual run: $(date)" >> README.md
-          gh auth setup-git
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add README.md
           git commit -m "Update README timestamp [skip ci]" || echo "No changes to commit"
-          git push
+          git push "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
