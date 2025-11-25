@@ -15,7 +15,7 @@ export default defineConfig(() => ({
     },
   },
   // IMPORTANT: trailing slash required for subpath hosting
-  base: "/Air_Quality-Monitor-/",
+
 }));
 
 
