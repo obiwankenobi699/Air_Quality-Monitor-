@@ -7,7 +7,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [".github/src/*"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,
