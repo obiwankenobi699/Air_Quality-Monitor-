@@ -3,32 +3,30 @@ name: Deploy to GitHub Pages
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@8f15223d434a8f2fcf0f7aa9c5a7c0bc495978fc
         with:
-          node-version: 22
-          cache: 'npm'
+          node-version: 20
+          cache: npm
 
-      - name: Install
+      - name: Install dependencies
         run: npm ci
 
       - name: Build
         run: npm run build
 
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v7
+        uses: peaceiris/actions-gh-pages@bdf93b6c9f7d8e9ddb07f8a19e8f937a9825cd45
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-
