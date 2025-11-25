@@ -4,6 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
+   base: "/Air_Quality-Monitor-/",
   server: {
     host: "::",
     port: 8080,
@@ -15,7 +16,6 @@ export default defineConfig(() => ({
     },
   },
   // IMPORTANT: trailing slash required for subpath hosting
-
 }));
 
 
